@@ -1,8 +1,54 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Roulette Game";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div style="padding: 20px;">
+    <h2>Roulette Game</h2>
+    <div id="coinsDisplay">Loading coins...</div>
+    <div id="lastResult" style="margin-top: 20px;"></div>
+    <input type="number" id="betAmount" value="10" min="1" step="1" style="margin-top: 20px;"/>
+    <button onclick="placeBet('red')">Bet Red</button>
+    <button onclick="placeBet('black')">Bet Black</button>
+    <button onclick="placeBet('green')">Bet Green</button>
 </div>
+
+@section Scripts{
+    <script>
+        const userId = 1;  // for now, thats default userID
+
+        function placeBet(color) {
+            const amount = parseInt(document.getElementById('betAmount').value);
+            fetch('/api/rouletteAPI/bet', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId: userId, colorBet: color, amount: amount })
+            })
+            .then(response => response.json())
+            .then(data => {
+                //alert(`Result: ${data.resultColor} (${data.result}). You now have ${data.currentCoins} coins.`);
+                updateCoins();
+                document.getElementById('lastResult').innerHTML = `Last result was: <strong>${data.resultColor}</strong> (${data.result})`;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function updateCoins() {
+            fetch(`/api/rouletteAPI/coins/${userId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(coins => {
+                    document.getElementById('coinsDisplay').textContent = `Your Coins: ${coins}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching coins:', error);
+                    document.getElementById('coinsDisplay').textContent = 'Failed to load coins data';
+                });
+        }
+
+        updateCoins();
+    </script>
+}
