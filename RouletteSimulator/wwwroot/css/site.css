@@ -1,5 +1,6 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    color: white
 }
 
 @media (min-width: 768px) {
@@ -18,5 +19,24 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #1B1B1E;
+    color: white
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.bg-opacity-3 {
+    --bs-bg-opacity: 0.03;
+}
+
+.index {
+    padding: 2rem;
+    margin: 1rem 0rem 1rem 0rem;
+}
+
+.place-bet-button {
+    padding: 0.3rem 3rem 0.3rem 3rem;
 }
