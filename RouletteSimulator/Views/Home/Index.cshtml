@@ -1,8 +1,105 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Main Page -";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="bg-white rounded-4 bg-opacity-3 index">
+    <div id="coinsDisplay">Loading coins...</div>
+
+    <div id="lastResult" style="margin-top: 10px;"></div>
+
+    <input type="number" id="betAmount" value="10" min="1" step="1" style="margin-top: 20px;"/>
+    <button onclick="changeBetAmount('CLEAR')">CLEAR</button>
+    <button onclick="changeBetAmount('+10')">+10</button>
+    <button onclick="changeBetAmount('+100')">+100</button>
+    <button onclick="changeBetAmount('+1000')">+1000</button>
+    <button onclick="changeBetAmount('1/2')">1 / 2</button>
+    <button onclick="changeBetAmount('X2')">X2</button>
+    <button onclick="changeBetAmount('MAX')">MAX</button>
 </div>
+
+<div class="bg-white rounded-4 bg-opacity-3 index" style="display: flex; justify-content:space-around;" style="display: flex; justify-content:space-around;">
+    <button class="place-bet-button" onclick="placeBet('red')" style="background-color: red;">Bet Red</button>
+    <button class="place-bet-button" onclick="placeBet('black')" style="background-color: black; color: white;">Bet Black</button>
+    <button class="place-bet-button" onclick="placeBet('green')" style="background-color: greenyellow;">Bet Green</button>
+</div>
+
+@section Scripts{
+    <script>
+        const userId = 1;  // for now, thats default userID
+
+        function placeBet(color) {
+            const amount = parseInt(document.getElementById('betAmount').value);
+            fetch('/api/rouletteAPI/bet', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId: userId, colorBet: color, amount: amount })
+            })
+            .then(response => response.json())
+            .then(data => {
+                //alert(`Result: ${data.resultColor} (${data.result}). You now have ${data.currentCoins} coins.`);
+                updateCoins();
+                document.getElementById('lastResult').innerHTML = `Last result was: <strong>${data.resultColor}</strong> (${data.result})`;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function changeBetAmount(action) {
+            let currentAmount = parseInt(document.getElementById('betAmount').value);
+            switch (action) {
+                case 'CLEAR':
+                    document.getElementById('betAmount').value = '0';
+                    break;
+                case '+10':
+                    document.getElementById('betAmount').value = currentAmount + 10;
+                    break;
+                case '+100':
+                    document.getElementById('betAmount').value = currentAmount + 100;
+                    break;
+                case '+1000':
+                    document.getElementById('betAmount').value = currentAmount + 1000;
+                    break;
+                case '1/2':
+                    document.getElementById('betAmount').value = Math.floor(currentAmount / 2);
+                    break;
+                case 'X2':
+                    document.getElementById('betAmount').value = currentAmount * 2;
+                    break;
+                case 'MAX':
+                    fetch(`/api/rouletteAPI/coins/${userId}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(coins => {
+                            document.getElementById('betAmount').value = coins;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching coins:', error);
+                            document.getElementById('coinsDisplay').textContent = 'Failed to load coins data';
+                        });
+                    break;
+            }
+        }
+
+        function updateCoins() {
+            fetch(`/api/rouletteAPI/coins/${userId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(coins => {
+                    document.getElementById('coinsDisplay').textContent = `Your Coins: ${coins}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching coins:', error);
+                    document.getElementById('coinsDisplay').textContent = 'Failed to load coins data';
+                });
+        }
+
+        updateCoins();
+    </script>
+}
