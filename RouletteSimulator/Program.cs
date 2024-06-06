@@ -1,24 +1,28 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RouletteSimulator.Data;
 using RouletteSimulator.Models;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var connectionString = builder.Configuration.GetConnectionString("default");
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<RouletteDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Test")));
+    options.UseSqlServer(connectionString));
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", builder =>
+builder.Services.AddIdentity<AppUser, IdentityRole>(
+    options =>
     {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
-});
+        options.Password.RequiredUniqueChars = 0;
+        options.Password.RequireUppercase = false;
+        options.Password.RequiredLength = 8;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireLowercase = false;
+    })
+    .AddEntityFrameworkStores<RouletteDbContext>().AddDefaultTokenProviders();
+
 
 var app = builder.Build();
 
@@ -52,6 +56,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<RouletteDbContext>();
     context.Database.EnsureCreated();
+
     // Checks if table UserCoins is empty
     if (!context.UserCoins.Any())
     {

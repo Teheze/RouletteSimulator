@@ -48,9 +48,8 @@ public class AccountController(SignInManager<AppUser> signInManager, UserManager
             AppUser user = new()
             {
                 Name = model.Name,
-                UserName = model.Email,
+                UserName = model.Name,
                 Email = model.Email,
-                Address = model.Address
             };
 
             var result = await userManager.CreateAsync(user, model.Password!);
