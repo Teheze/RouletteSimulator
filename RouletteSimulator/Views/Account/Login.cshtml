@@ -1,0 +1,44 @@
+﻿﻿@using RouletteSimulator.ViewModels;
+@model LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-5 card p-5 bg-white rounded-4 bg-opacity-3">
+        <h2 class="text-center text-info">Login</h2>
+        <form asp-action="Login" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-1">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" style="background-color: #555; border: 1px solid #888" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="mb-1">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" style="background-color: #555; border: 1px solid #888" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="mb-2 form-check">
+                <label class="form-check-label">
+                    <input asp-for="RememberMe" class="form-check-input" style="background-color: #555; border: 1px solid #888" /> @Html.DisplayNameFor(a => a.RememberMe)
+                </label>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <a asp-action="Register" class="mt-2 text-decoration-none float-start" asp-route-returnurl="@ViewData["ReturnUrl"]">Don't have account?</a>
+                </div>
+                <div class="col-4">
+                    <input type="submit" value="Login" class="btn btn-primary btn-sm float-end" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
