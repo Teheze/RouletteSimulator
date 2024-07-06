@@ -196,7 +196,7 @@ namespace RouletteSimulator.Controllers
                 })
                 .ToList();
 
-            return Ok(betSummary);
+            return Ok(betSummary); 
         }
     }
 }

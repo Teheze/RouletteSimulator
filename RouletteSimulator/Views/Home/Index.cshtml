@@ -3,32 +3,38 @@
 }
 
 <div class="bg-white rounded-4 bg-opacity-3 index">
-    <div id="coinsDisplay">Loading coins...</div>
-    <div id="countdown">Next draw in: 20 seconds</div>
+    <div id="countdown-container">
+        <div id="progress-bar">
+            <div id="progress-bar-fill"></div>
+        </div>
+        <div id="countdown">20 seconds</div>
+    </div>
 
-    <input type="number" id="betAmount" value="10" min="1" step="1" style="margin-top: 20px;" />
-    <button onclick="changeBetAmount('CLEAR')">CLEAR</button>
-    <button onclick="changeBetAmount('+10')">+10</button>
-    <button onclick="changeBetAmount('+100')">+100</button>
-    <button onclick="changeBetAmount('+1000')">+1000</button>
-    <button onclick="changeBetAmount('1/2')">1 / 2</button>
-    <button onclick="changeBetAmount('X2')">X2</button>
-    <button onclick="changeBetAmount('MAX')">MAX</button>
+    <div id="coinsDisplay">Loading coins...</div>
+
+    <input type="number" class="amountInput" id="betAmount" value="10" min="1" step="1" style="margin-top: 20px;" />
+    <button class="amountButton" onclick="changeBetAmount('CLEAR')">CLEAR</button>
+    <button class="amountButton" onclick="changeBetAmount('+10')">+10</button>
+    <button class="amountButton" onclick="changeBetAmount('+100')">+100</button>
+    <button class="amountButton" onclick="changeBetAmount('+1000')">+1000</button>
+    <button class="amountButton" onclick="changeBetAmount('1/2')">1 / 2</button>
+    <button class="amountButton" onclick="changeBetAmount('X2')">X2</button>
+    <button class="amountButton" onclick="changeBetAmount('MAX')">MAX</button>
     
     <div id="lastResults" style="text-align: center; margin-top: 20px; display: flex; justify-content:space-around;">Loading last results...</div>
 
 </div>
 
-<div class="bg-white rounded-4 bg-opacity-3 index" style="display: flex; justify-content:space-around;">
-    <button class="place-bet-button" onclick="placeBet('red')" style="background-color: red;">Bet Red</button>
-    <button class="place-bet-button" onclick="placeBet('black')" style="background-color: black; color: white;">Bet Black</button>
-    <button class="place-bet-button" onclick="placeBet('green')" style="background-color: greenyellow;">Bet Green</button>
+<div class="bg-white rounded-4 bg-opacity-3 index place-bet" id="place-bet">
+    <button class="place-bet-button" id="place-bet-red" onclick="placeBet('red')">Bet Red</button>
+    <button class="place-bet-button" id="place-bet-black" onclick="placeBet('black')">Bet Black</button>
+    <button class="place-bet-button" id="place-bet-green" onclick="placeBet('green')">Bet Green</button>
 </div>
 
-<div class="bg-white rounded-4 bg-opacity-3 index" style="display: flex; justify-content:space-around;">
-    <div id="betInfoRed"></div>
-    <div id="betInfoBlack"></div>
-    <div id="betInfoGreen"></div>
+<div class="bg-white rounded-4 bg-opacity-3 index" style="display: flex; justify-content: space-around;">
+    <div id="betInfoRed">Bets = 0, Total = 0</div>
+    <div id="betInfoBlack">Bets = 0, Total = 0</div>
+    <div id="betInfoGreen">Bets = 0, Total = 0</div>
 </div>
 @section Scripts
 {
@@ -64,14 +70,23 @@
         }
 
         async function fetchCoins() {
-            const coinsResponse = await fetch('/api/rouletteapi/coins');
-            if (coinsResponse.ok) {
+            try {
+                const coinsResponse = await fetch('/api/rouletteapi/coins');
+                if (!coinsResponse.ok) {
+                    throw new Error("Failed to fetch coins.");
+                }
                 const coinsJson = await coinsResponse.json();
-                document.getElementById('coinsDisplay').innerText = `Your coins: ${coinsJson}`;
-            } else {
-                alert("Failed to fetch coins.");
+                document.getElementById('coinsDisplay').innerText = `Balance: ${coinsJson}`;
+            } catch (error) {
+                console.error("Error fetching coins:", error);
             }
         }
+
+        async function setupCoinPolling() {
+            await fetchCoins();
+            setInterval(fetchCoins, 5000);
+        }
+        document.addEventListener('DOMContentLoaded', setupCoinPolling);
 
         async function fetchLastResults() {
             const resultsResponse = await fetch('/api/rouletteapi/last-10');
@@ -112,7 +127,6 @@
 
             if (response.ok) {
                 const resultJson = await response.json();
-                document.getElementById('betPlaced').innerText = `Bet placed: ${type}, ${amount}`;
                 await fetchCoins();
                 await fetchLastResults();
                 await fetchBetInfo();
@@ -123,33 +137,42 @@
         }
 
         async function fetchBetInfo() {
-            const response = await fetch('/api/rouletteapi/current-bets');
-            if (response.ok) {
-                const betData = await response.json();
-                let redBetCount = 0, redTotalAmount = 0;
-                let blackBetCount = 0, blackTotalAmount = 0;
-                let greenBetCount = 0, greenTotalAmount = 0;
+            try {
+                const response = await fetch('/api/rouletteapi/current-bets');
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log("Fetched Bet Data:", data); // For debugging
 
-                betData.forEach(bet => {
-                    if (bet.BetType === 'red') {
-                        redBetCount = bet.BetCount;
-                        redTotalAmount = bet.TotalAmount;
-                    } else if (bet.BetType === 'black') {
-                        blackBetCount = bet.BetCount;
-                        blackTotalAmount = bet.TotalAmount;
-                    } else if (bet.BetType === 'green') {
-                        greenBetCount = bet.BetCount;
-                        greenTotalAmount = bet.TotalAmount;
-                    }
-                });
+                    const betSummary = data;
+                    let redBetCount = 0, redTotalAmount = 0;
+                    let blackBetCount = 0, blackTotalAmount = 0;
+                    let greenBetCount = 0, greenTotalAmount = 0;
 
-                document.getElementById('betInfoRed').innerText = `Red: Bets = ${redBetCount}, Total = ${redTotalAmount}`;
-                document.getElementById('betInfoBlack').innerText = `Black: Bets = ${blackBetCount}, Total = ${blackTotalAmount}`;
-                document.getElementById('betInfoGreen').innerText = `Green: Bets = ${greenBetCount}, Total = ${greenTotalAmount}`;
-            } else {
-                alert('Failed to fetch bet information.');
+                    betSummary.forEach(bet => {
+                        if (bet.betType === 'red') {
+                            redBetCount = bet.betCount;
+                            redTotalAmount = bet.totalAmount;
+                        } else if (bet.betType === 'black') {
+                            blackBetCount = bet.betCount;
+                            blackTotalAmount = bet.totalAmount;
+                        } else if (bet.betType === 'green') {
+                            greenBetCount = bet.betCount;
+                            greenTotalAmount = bet.totalAmount;
+                        }
+                    });
+
+                    document.getElementById('betInfoRed').innerText = `Bets = ${redBetCount}, Total = ${redTotalAmount}`;
+                    document.getElementById('betInfoBlack').innerText = `Bets = ${blackBetCount}, Total = ${blackTotalAmount}`;
+                    document.getElementById('betInfoGreen').innerText = `Bets = ${greenBetCount}, Total = ${greenTotalAmount}`;
+                } else {
+                    console.error('Failed to fetch bet information:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching bet information:', error);
             }
         }
+
+        document.addEventListener('DOMContentLoaded', fetchBetInfo);
 
         async function fetchNextDrawTime() {
             const response = await fetch('/api/rouletteapi/next-draw');
@@ -164,6 +187,9 @@
 
         async function startCountdown() {
             let nextDrawTime = await fetchNextDrawTime();
+            const initialTime = Math.floor((nextDrawTime - new Date()) / 1000);
+            const progressBarFill = document.getElementById('progress-bar-fill');
+
             setInterval(async () => {
                 const now = new Date();
                 let timeRemaining = Math.floor((nextDrawTime - now) / 1000);
@@ -174,15 +200,19 @@
                     await fetchLastResults();
                 }
 
-                document.getElementById('countdown').innerText = `Next draw in: ${timeRemaining} seconds`;
+                document.getElementById('countdown').innerText = `${timeRemaining} seconds`;
+
+                // Update the progress bar
+                const progressPercentage = (timeRemaining / 18) * 100;
+                progressBarFill.style.width = `${progressPercentage}%`;
             }, 1000);
         }
-
         document.addEventListener('DOMContentLoaded', async () => {
             await fetchCoins();
             await fetchLastResults();
             await fetchBetInfo();
             await startCountdown();
+            setInterval(fetchBetInfo, 1000);
         });
     </script>
 }

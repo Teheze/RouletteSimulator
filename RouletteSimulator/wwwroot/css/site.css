@@ -37,6 +37,143 @@ body {
     margin: 1rem 0rem 1rem 0rem;
 }
 
+
+/*Countdown section*/
+#countdown-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#countdown {
+    font-size: 20px;
+    display: flex;
+    justify-content: start;
+    margin-bottom: 10px;
+    color: white;
+}
+
+#progress-bar {
+    width: 100%;
+    background-color: darkgray;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#progress-bar-fill {
+    height: 40px;
+    background-color: red;
+    width: 100%;
+    transition: width 1s linear;
+}
+
+
+/*Balance section*/
+#coinsDisplay {
+    padding: 1rem;
+    width: fit-content;
+    background-color: #1B1B1E;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: start;
+    color: white;
+    font-family: Verdana;
+    font-size: 16px;
+    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0px 0px 3px 0px rgba(255, 255, 255, 0.3);
+}
+
+
+
+/*Input amount and button section*/
+.amountInput {
+    background-color: transparent;
+    border-radius: 28px;
+    border: 1px solid #cfcfcf;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 7px 10px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.amountInput:hover {
+    background-color: black;
+}
+
+
+.amountButton {
+    background-color: transparent;
+    border-radius: 28px;
+    border: 1px solid #cfcfcf;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 7px 10px;
+    text-decoration: none;
+    margin-top: 0.5rem;
+}
+
+.amountButton:hover {
+    background-color: black;
+}
+
+.amountButton:active {
+    position: relative;
+    top: 1px;
+}
+
+/*Number input styling*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+/*Place bet section*/
+#place-bet {
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+}
+
 .place-bet-button {
     padding: 0.3rem 3rem 0.3rem 3rem;
+    width: 100%;
+    font-family: Verdana;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#place-bet-red {
+    background-color: rgba(251, 84, 57, 1);
+    background-image: linear-gradient(90deg, rgba(251, 84, 57, 1) 0%, rgba(74, 18, 18, 1) 100%);
+    border-radius: 1rem 0rem 0rem 1rem;
+    border: 0px;
+}
+#place-bet-black {
+    background-color: black;
+    color: white;
+    border: 0px;
+}
+#place-bet-green {
+    background-color: rgba(84, 251, 57, 1);
+    background-image: linear-gradient(270deg, rgba(84, 251, 57, 1) 0%, rgba(18, 74, 27, 1) 100%);
+    border-radius: 0rem 1rem 1rem 0rem;
+    border: 0px;
 }

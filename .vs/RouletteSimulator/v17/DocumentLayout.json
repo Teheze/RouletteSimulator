@@ -3,28 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|c:\\users\\tehez\\source\\repos\\roulettesimulator\\roulettesimulator\\controllers\\rouletteapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|solutionrelative:roulettesimulator\\controllers\\rouletteapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|c:\\users\\tehez\\source\\repos\\roulettesimulator\\roulettesimulator\\viewmodels\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|solutionrelative:roulettesimulator\\viewmodels\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|c:\\users\\tehez\\source\\repos\\roulettesimulator\\roulettesimulator\\viewmodels\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|solutionrelative:roulettesimulator\\viewmodels\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|c:\\users\\tehez\\source\\repos\\roulettesimulator\\roulettesimulator\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|solutionrelative:roulettesimulator\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|c:\\users\\tehez\\source\\repos\\roulettesimulator\\roulettesimulator\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|solutionrelative:roulettesimulator\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|c:\\users\\tehez\\source\\repos\\roulettesimulator\\roulettesimulator\\services\\roulettedrawservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|solutionrelative:roulettesimulator\\services\\roulettedrawservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|c:\\users\\tehez\\source\\repos\\roulettesimulator\\roulettesimulator\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{AED884F5-C52C-465C-82B2-EF0B3663D4F1}|RouletteSimulator\\RouletteSimulator.csproj|solutionrelative:roulettesimulator\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,80 +42,49 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "RouletteSimulator\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "RouletteSimulator\\wwwroot\\css\\site.css",
+              "ViewState": "AQIAAJMAAAAAAAAAAAAAAKYAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-07-06T05:48:07.988Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "a47d79f6-3447-4500-8814-1d817dd4e8d2",
+        "Display": 1,
+        "X": 348,
+        "Y": 0,
+        "Width": 737,
+        "Height": 901,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RegisterVM.cs",
-              "DocumentMoniker": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\ViewModels\\RegisterVM.cs",
-              "RelativeDocumentMoniker": "RouletteSimulator\\ViewModels\\RegisterVM.cs",
-              "ToolTip": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\ViewModels\\RegisterVM.cs",
-              "RelativeToolTip": "RouletteSimulator\\ViewModels\\RegisterVM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T03:40:38.492Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginVM.cs",
-              "DocumentMoniker": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\ViewModels\\LoginVM.cs",
-              "RelativeDocumentMoniker": "RouletteSimulator\\ViewModels\\LoginVM.cs",
-              "ToolTip": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\ViewModels\\LoginVM.cs",
-              "RelativeToolTip": "RouletteSimulator\\ViewModels\\LoginVM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T03:40:35.555Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RouletteDrawService.cs",
-              "DocumentMoniker": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\Services\\RouletteDrawService.cs",
-              "RelativeDocumentMoniker": "RouletteSimulator\\Services\\RouletteDrawService.cs",
-              "ToolTip": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\Services\\RouletteDrawService.cs",
-              "RelativeToolTip": "RouletteSimulator\\Services\\RouletteDrawService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACsAAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T01:00:36.589Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "RouletteSimulator\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "RouletteSimulator\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAAEgAAAANAAAA",
+              "ViewState": "AQIAAIcAAAAAAAAAAAAAAMwAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-07-06T00:39:52.352Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RouletteAPIController.cs",
-              "DocumentMoniker": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\Controllers\\RouletteAPIController.cs",
-              "RelativeDocumentMoniker": "RouletteSimulator\\Controllers\\RouletteAPIController.cs",
-              "ToolTip": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\Controllers\\RouletteAPIController.cs",
-              "RelativeToolTip": "RouletteSimulator\\Controllers\\RouletteAPIController.cs",
-              "ViewState": "AQIAAGwAAAAAAAAAAAAwwHcAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T00:39:50.628Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "bootstrap.css",
-              "DocumentMoniker": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-              "RelativeDocumentMoniker": "RouletteSimulator\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-              "ToolTip": "C:\\Users\\Tehez\\source\\repos\\RouletteSimulator\\RouletteSimulator\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-              "RelativeToolTip": "RouletteSimulator\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-              "ViewState": "AQIAAEYhAAAAAAAAAADwv2ohAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-07-06T03:18:15.063Z",
               "EditorCaption": ""
             }
           ]
