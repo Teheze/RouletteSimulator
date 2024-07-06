@@ -7,7 +7,7 @@ namespace RouletteSimulator.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int Coins { get; set; }
     }
 }

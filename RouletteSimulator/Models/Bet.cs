@@ -4,10 +4,14 @@ namespace RouletteSimulator.Models
 {
     public class Bet
     {
-        [Key]
-        public int BetId { get; set; }
-        public int UserId { get; set; }
+        public int Id { get; set; }
+        public string? UserId { get; set; }
+        [Required]
+        public string BetType { get; set; }
+        [Required]
         public int Amount { get; set; }
-        public string ColorBet { get; set; }
+        [Required]
+        public DateTime Date { get; set; }
     }
+
 }

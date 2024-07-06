@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RouletteSimulator.Models;
-using System.Collections.Generic;
 
 namespace RouletteSimulator.Data
 {
@@ -12,7 +11,8 @@ namespace RouletteSimulator.Data
         {
         }
 
-        public DbSet<Bet> Bets { get; set; }
         public DbSet<UserCoins> UserCoins { get; set; }
+        public DbSet<Bet> Bets { get; set; }
+        public DbSet<RouletteResult> RouletteResults { get; set; }
     }
 }
